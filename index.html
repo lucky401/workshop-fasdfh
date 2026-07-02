@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky — Portfolio</title>
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-soft:#0f1930;
+    --cyan:#22d3ee;
+    --text:#ffffff;
+    --muted:#94a3b8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  section{padding:80px 20px;max-width:900px;margin:0 auto;}
+
+  /* Navbar */
+  nav{
+    position:sticky;top:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 24px;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(148,163,184,0.15);
+  }
+  nav .logo{font-weight:700;color:var(--cyan);font-size:1.2rem;}
+  nav ul{list-style:none;display:flex;gap:20px;}
+  nav ul li a{font-size:0.9rem;color:var(--muted);transition:color .2s;}
+  nav ul li a:hover{color:var(--cyan);}
+
+  /* Hero */
+  .hero{
+    text-align:center;
+    padding:100px 20px 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-100px;left:50%;
+    width:500px;height:500px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(34,211,238,0.25) 0%,rgba(34,211,238,0) 70%);
+    filter:blur(20px);
+    z-index:0;
+  }
+  .hero-content{position:relative;z-index:1;}
+  .avatar{
+    width:130px;height:130px;
+    border-radius:50%;
+    margin:0 auto 24px;
+    background:linear-gradient(135deg,var(--cyan),#0891b2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.5rem;font-weight:700;color:#0b1220;
+    box-shadow:0 0 40px rgba(34,211,238,0.5), 0 0 0 4px rgba(34,211,238,0.15);
+  }
+  .hero h1{font-size:2.5rem;margin-bottom:8px;}
+  .hero p{color:var(--muted);font-size:1.1rem;}
+
+  /* Fade-in animation */
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out, transform .6s ease-out;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+
+  h2{font-size:1.8rem;margin-bottom:20px;color:var(--text);}
+  h2 span{color:var(--cyan);}
+
+  .about p{color:var(--muted);font-size:1.05rem;}
+
+  /* Skills */
+  .skills-grid{display:flex;flex-wrap:wrap;gap:12px;}
+  .badge{
+    padding:8px 16px;
+    background:var(--bg-soft);
+    border:1px solid rgba(34,211,238,0.3);
+    border-radius:999px;
+    font-size:0.9rem;
+    color:var(--cyan);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .badge:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(34,211,238,0.2);}
+
+  /* Projects */
+  .projects-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:640px){.projects-grid{grid-template-columns:repeat(3,1fr);}}
+  .card{
+    background:var(--bg-soft);
+    border:1px solid rgba(148,163,184,0.15);
+    border-radius:12px;
+    padding:24px;
+    display:flex;flex-direction:column;gap:12px;
+    transition:transform .25s, border-color .25s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--cyan);}
+  .card h3{font-size:1.1rem;color:var(--text);}
+  .card p{color:var(--muted);font-size:0.9rem;flex-grow:1;}
+  .card a{color:var(--cyan);font-size:0.9rem;font-weight:600;}
+  .card a:hover{text-decoration:underline;}
+
+  /* Contact */
+  .contact-links{display:flex;flex-wrap:wrap;gap:16px;}
+  .contact-links a{
+    padding:10px 18px;
+    background:var(--bg-soft);
+    border:1px solid rgba(148,163,184,0.15);
+    border-radius:8px;
+    font-size:0.95rem;
+    transition:border-color .2s, color .2s;
+  }
+  .contact-links a:hover{border-color:var(--cyan);color:var(--cyan);}
+
+  footer{
+    text-align:center;
+    padding:30px 20px;
+    color:var(--muted);
+    font-size:0.85rem;
+    border-top:1px solid rgba(148,163,184,0.15);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lucky</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="avatar">L</div>
+    <h1>Lucky</h1>
+    <p>Calon developer | Mahasiswa coding | Pecinta kopi</p>
+  </div>
+</section>
+
+<section id="about" class="about fade-in">
+  <h2>Tentang <span>Saya</span></h2>
+  <p>Saya Lucky, mahasiswa yang lagi belajar coding sambil ngoprek proyek kecil-kecilan di waktu luang. Tertarik sama web development dan suka nyari cara paling simpel buat nyelesain masalah. Ditemani kopi, semua bug jadi lebih gampang dihadapi.</p>
+</section>
+
+<section id="skills" class="fade-in">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <span class="badge">JavaScript</span>
+    <span class="badge">HTML</span>
+    <span class="badge">CSS</span>
+    <span class="badge">Python</span>
+    <span class="badge">Git</span>
+    <span class="badge">React</span>
+    <span class="badge">Problem Solving</span>
+  </div>
+</section>
+
+<section id="projects" class="fade-in">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="card">
+      <h3>To-Do List App</h3>
+      <p>Aplikasi manajemen tugas sederhana dengan local storage, dibangun pakai vanilla JavaScript.</p>
+      <a href="#">Lihat Proyek →</a>
+    </div>
+    <div class="card">
+      <h3>Weather Dashboard</h3>
+      <p>Dashboard cuaca real-time yang konsumsi API publik, tampil suhu dan kondisi harian.</p>
+      <a href="#">Lihat Proyek →</a>
+    </div>
+    <div class="card">
+      <h3>Portfolio Generator</h3>
+      <p>Tool kecil buat generate halaman portfolio statis dari template HTML/CSS.</p>
+      <a href="#">Lihat Proyek →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fade-in">
+  <h2>Contact</h2>
+  <div class="contact-links">
+    <a href="https://instagram.com/lucky.dev" target="_blank">Instagram — @lucky.dev</a>
+    <a href="https://linkedin.com/in/lucky-dev" target="_blank">LinkedIn — lucky-dev</a>
+    <a href="https://github.com/lucky404" target="_blank">GitHub — lucky404</a>
+    <a href="mailto:lucky.dev@example.com">Email — lucky.dev@example.com</a>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> Lucky. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
